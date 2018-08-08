@@ -1,0 +1,36 @@
+.hidden {
+	display: none;
+}
+
+.formStyle {
+	margin : 4px; !important
+}
+
+
+.validate {
+ color: indianred;
+}
+
+.settingsDropdown
+{
+  float: right; !important
+}
+
+.tab
+{
+  cursor: pointer;
+  margin-left: 5px;
+  display: inline-block;
+  width: 30%;
+  text-align: center;
+  border-left: 1px solid #e6e3e3;
+  border-right: 1px solid #e6e3e3;
+  border-bottom: 1px solid #e6e3e3;
+  box-shadow: 5px 5px 5px #dcdcdc;
+}
+
+.active-tab 
+{
+ background: #fbfbfb;;
+ box-shadow: none;
+}
