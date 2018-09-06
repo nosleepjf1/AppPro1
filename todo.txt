@@ -1,0 +1,11 @@
+
+I added code so that the responses tab now has the same form elements as the edit tab.
+TODO I need to make the form elements read-only on the responses tab.
+I added code to the retrieveformdata.php script that retrieves each submission id related to that form and then returns...
+...the description from the set of rows from the first submission.
+TODO display the row data from the first submission id in the responses tab. to do this i have to parse the data in script.js and then insert it
+After I get this far, I will need to add next and previous buttons and update the data based on the position of the...
+...submissions array in the retrieveformdata.php script
+
+
+data for text and numbers are now showing in response tab

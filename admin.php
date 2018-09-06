@@ -107,7 +107,7 @@
   </div>
 </div>
 
-<!-- testing area -->
+
 <div class="modal" id="createUserModal" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -140,7 +140,48 @@
     </div>
   </div>
 </div>
+
 <!-- testing area -->
+<!-- Okay this is working. The key is data-toggle and data-target on line 69. Then you just need the modal contents below that will show when the button is clicked -->
+
+<div class="modal" id="createAccountModal2" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">2nd modal</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+
+      <div class="container">
+      <span class="col-md tab" id="editTab" data-toggle="modal" data-dismiss="modal" data-target="#exampleModal0">Edit</span>
+      <span class="col-md tab active-tab" data-toggle="modal" data-dismiss="modal" data-target="#createAccountModal2">Responses</span>
+      </div>
+
+
+      <div class="modal-body" id="responses-body">
+        <div class="form-group">
+    <label for="exampleInputEmail2">Email address 2nd modal</label>
+    <input type="email" class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp" placeholder="Enter email">
+    <p class="validate" id="createAccountEmailVal"></p>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword2">Password 2nd modal</label>
+    <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
+    <p class="validate" id="createAccountPasswordVal"></p>
+  </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" ng-click= "myCtrl.CreateAccount()">Create Account</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- end testing area -->
 
 </div> <!-- end div for myctrl as vm -->
 </body>
@@ -190,7 +231,7 @@ $numrows2 = mysqli_num_rows($result2);
   $description2 = $row2['description'];
   $options2 = $row2['options'];
   $input_type = $row2['input_type'];
-  //TODO -> work on FormContents so that I add the correct info into the forms
+
   FormContents($input_type, $title2, $description2, $options2, $j);
  // print "$title2 - $description2 - $input_type";
   }
@@ -274,6 +315,14 @@ echo '<button type="button" class="close" data-dismiss="modal" aria-label="Close
 echo '<span aria-hidden="true">&times;</span>';
 echo '</button>';
 echo '</div>';
+echo "<div class='container'>";
+echo "<span class='col-md tab active-tab'  data-target='#exampleModal";
+echo "$index";
+echo "'>Edit</span>";
+echo "<span class='col-md tab' id='Modal";
+echo "$index";
+echo "' data-toggle='modal' data-dismiss='modal' data-target='#createAccountModal2' ng-click= 'myCtrl.ResponsesTab()'>Responses</span>";
+echo "</div>";
 echo '<div class="modal-body">';
 echo '<!-- Form Area -->';
 echo '<form action="submitform.php" method="POST" enctype="multipart/form-data" class="newform" id="form';
@@ -306,6 +355,8 @@ function FormContents($input_type, $title, $description, $options, $j)
   echo "$input_type";
   echo "'name='text";
   echo "$j";
+  echo "'id='input";
+  echo "$j";
   echo "' class='form-control'>";
   echo "<small class='form-text text-muted'>";
   echo "$description";
@@ -320,6 +371,8 @@ function FormContents($input_type, $title, $description, $options, $j)
   echo "$input_type";
   echo "'name='number";
   echo "$j";
+  echo "'id='input";
+  echo "$j";
   echo "' class='form-control'>";
   echo "<small class='form-text text-muted'>";
   echo "$description";
@@ -333,7 +386,10 @@ function FormContents($input_type, $title, $description, $options, $j)
   echo "<input type='";
   echo "$input_type";
   //testing here
-  echo "'name='image[]' class='form-control' multiple>";
+  echo "'name='image[]'";
+  echo "id='input";
+  echo "$j'";
+  echo "class='form-control' multiple>";
   //testing here
   echo "<small class='form-text text-muted'>";
   echo "$description";
@@ -350,14 +406,14 @@ function FormContents($input_type, $title, $description, $options, $j)
   $optionArr = explode("-",$options);
   for($i = 0; $i < count($optionArr); $i++)
   {
-    echo "<div class='checkbox'><label><input type='checkbox'";
+    echo "<div class='checkbox'><span><input type='checkbox'";
     echo "name='checkbox";
     echo "$j"."[]";
     echo "'value='";
     echo "$optionArr[$i]";
     echo "'>";
     echo " $optionArr[$i]";
-    echo "</label></div>";
+    echo "</span></div>";
   }
   //Testing area
   
@@ -375,9 +431,13 @@ function FormContents($input_type, $title, $description, $options, $j)
   echo "$title";
   echo "</label>";
   //the line below begins the dropdown element
-  echo "<div class='dropdown'><button class='btn btn-secondary dropdown-toggle' type='button' id='dropdownMenuButton";
+  echo "<div class='dropdown' id='input";
   echo "$j";
-  echo "' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Select an Option</button><div class='dropdown-menu makedropdownwork";
+  echo "'><button class='btn btn-secondary dropdown-toggle' type='button' id='dropdownMenuButton";
+  echo "$j";
+ // echo " input";
+ // echo "$j";
+  echo "'data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Select an Option</button><div class='dropdown-menu makedropdownwork";
   echo "$j";
   echo "' name='makedropdownwork";
   echo "$j";
@@ -409,7 +469,9 @@ function FormContents($input_type, $title, $description, $options, $j)
 
 function FormEnd($index, $formId)
 {
-echo '<input type="hidden" name="formId" value="';
+echo '<input type="hidden" id="getFormId';
+echo "$index";
+echo '"name="formId" value="';
 echo "$formId";
 echo '">';
 echo '<!-- End Form Area -->';
@@ -422,6 +484,7 @@ echo '<button type="button" class="btn btn-secondary" data-dismiss="modal">Close
 echo '<button type="submit" form="form';
 echo "$index";
 echo '" value="Submit" class="btn btn-primary" ng-click= "myCtrl.CreateForm()">Save changes</button>';
+echo "<button type='button' data-toggle='modal' data-dismiss='modal' data-target='#createAccountModal2'>tab</button>";
 // try this in the line above: onclick="event.preventDefault();document.getElementById('your-form').submit();"
 echo '</div>';
 echo '</div>';
@@ -430,6 +493,12 @@ echo '</div>';
 echo '</div>';
 
 }
+
+$sqlStatement2 = "SELECT * FROM form_data WHERE form_id = 43";
+$result2 = mysqli_query($db, $sqlStatement2);
+$numrows2 = mysqli_num_rows($result2);
+$row2 = mysqli_fetch_array($result2);
+print_r($row2);
 
 ?>
 

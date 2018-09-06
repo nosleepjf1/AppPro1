@@ -498,8 +498,24 @@
        
        
        };
-        
+       vm.ChangeModalView = function(index)
+            {
+            let modalSource = "exampleModal" + index;
+            console.log("modalSource " + modalSource);
+            alert(modalSource);
+            };
+
+       vm.ResponsesTab = function()
+            {
+                //I might not use this function... It depends on if i can find a better way to retrieve the formid when clicking on 'responses'
+                //for now I am doing this functionality in the script.js file
+            };
+
+
+
       });
+
+
       
       
 })();

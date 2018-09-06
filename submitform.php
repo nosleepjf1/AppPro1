@@ -27,6 +27,23 @@ $sqlStatement3 = "SELECT id, input_type FROM form_input2 WHERE form_id = $formId
 $result3 = mysqli_query($db, $sqlStatement3);
 $numrows3 = mysqli_num_rows($result3);
 
+//Testing Area
+//I am going to insert a new submission into the submission table here. Then I will retrieve that submission id and add it to the insert statements for form_data
+$addRowDataSubmission = "INSERT INTO form_submission (form_id) VALUES ('{$formId}')";
+$result = mysqli_query($db, $addRowDataSubmission);
+
+$submissionID = "SELECT MAX(id) AS max_id FROM form_submission";
+$getSubmissionId = mysqli_query($db, $submissionID);
+
+if($getSubmissionId){
+	$getSubmissionId = mysqli_fetch_assoc($getSubmissionId)['max_id'];
+}else{
+	die("Query did not run");
+}
+
+
+//End Testing area
+
 
 //echo 'text: ';
 //echo ($_POST['text']);
@@ -49,21 +66,21 @@ if($_POST[$textvar] != "")
   {
   echo ($_POST[$textvar]);
   echo "*";
-  $addRowData = "INSERT INTO form_data (data, form_id, input_id, input_type) VALUES ('{$_POST[$textvar]}', '{$formId}', '{$id3}', '{$input_type3}')";
+  $addRowData = "INSERT INTO form_data (data, form_id, submission_id, input_id, input_type) VALUES ('{$_POST[$textvar]}', '{$formId}', '{$getSubmissionId}', '{$id3}', '{$input_type3}')";
   $result = mysqli_query($db, $addRowData);
   }
 if($_POST[$numbervar] != "")
   {
   echo ($_POST[$numbervar]);
   echo "*";
-  $addRowData = "INSERT INTO form_data (data, form_id, input_id, input_type) VALUES ('{$_POST[$numbervar]}', '{$formId}', '{$id3}', '{$input_type3}')";
+  $addRowData = "INSERT INTO form_data (data, form_id, submission_id, input_id, input_type) VALUES ('{$_POST[$numbervar]}', '{$formId}', '{$getSubmissionId}', '{$id3}', '{$input_type3}')";
   $result = mysqli_query($db, $addRowData);
   }
 if($_POST[$dropdownvar] != "")
   {
   echo ($_POST[$dropdownvar]);
   echo "*";
-  $addRowData = "INSERT INTO form_data (data, form_id, input_id, input_type) VALUES ('{$_POST[$dropdownvar]}', '{$formId}', '{$id3}', '{$input_type3}')";
+  $addRowData = "INSERT INTO form_data (data, form_id, submission_id, input_id, input_type) VALUES ('{$_POST[$dropdownvar]}', '{$formId}', '{$getSubmissionId}', '{$id3}', '{$input_type3}')";
   $result = mysqli_query($db, $addRowData);
   }
 if($_POST[$checklistvar] != "")
@@ -73,7 +90,7 @@ if($_POST[$checklistvar] != "")
     {
     echo "*";
     echo $checkboxitem;
-    $addRowData = "INSERT INTO form_data (data, form_id, input_id, input_type) VALUES ('{$checkboxitem}', '{$formId}', '{$id3}', '{$input_type3}')";
+    $addRowData = "INSERT INTO form_data (data, form_id, submission_id, input_id, input_type) VALUES ('{$checkboxitem}', '{$formId}', '{$getSubmissionId}', '{$id3}', '{$input_type3}')";
     $result = mysqli_query($db, $addRowData);
     } 
   } 
@@ -115,10 +132,12 @@ $input_type4 = $row4['input_type'];
   if(empty($error) == true)
   {
     move_uploaded_file($file_tmp, "uploads/" . $file_name);
-    $path = $_SERVER['HTTP_REFERER']."uploads/"."$file_name";
+    // i commented the line below because I now have an admin and user page. For now i am entering in the path manually
+   // $path = $_SERVER['HTTP_REFERER']."uploads/"."$file_name";
+   $path = "http://localhost:8888/App/uploads/"."$file_name";
     echo "$path";
   }
-$addRow = "INSERT INTO form_image (image, form_id, input_id) VALUES ('{$path}', '{$formId}', '{$id4}')";
+$addRow = "INSERT INTO form_image (image, form_id, submission_id, input_id) VALUES ('{$path}', '{$formId}', '{$getSubmissionId}', '{$id4}')";
 $result = mysqli_query($db, $addRow);
 } //end forloop testing!!!
   

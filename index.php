@@ -51,10 +51,6 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="container">
-        <span class="col-md tab active-tab">active tab</span>
-        <span class="col-md tab">test tab</span>
-      </div>  
       <div class="modal-body">
         <div class="form-group">
     <label for="exampleInputEmail2">Email address</label>
@@ -70,44 +66,12 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" ng-click= "myCtrl.CreateAccount()">Create Account</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <button type="button" data-toggle="modal" data-target="#createAccountModal2">tab</button>
       </div>
     </div>
   </div>
 </div>
 
-<!-- testing area -->
-<!-- Okay this is working. The key is data-toggle and data-target on line 69. Then you just need the modal contents below that will show when the button is clicked -->
-<div class="modal" id="createAccountModal2" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">2nd modal</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="form-group">
-    <label for="exampleInputEmail2">Email address 2nd modal</label>
-    <input type="email" class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp" placeholder="Enter email">
-    <p class="validate" id="createAccountEmailVal"></p>
-  </div>
-  <div class="form-group">
-    <label for="exampleInputPassword2">Password 2nd modal</label>
-    <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
-    <p class="validate" id="createAccountPasswordVal"></p>
-  </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" ng-click= "myCtrl.CreateAccount()">Create Account</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-      </div>
-    </div>
-  </div>
-</div>
 
-<!-- end testing area -->
 
 
 </div> <!-- end div for myctrl as vm -->
