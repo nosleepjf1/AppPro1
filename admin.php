@@ -174,6 +174,12 @@
   </div>
       </div>
       <div class="modal-footer">
+
+<!-- TODO   I need to make these buttons update navigate through the submissions left and right  -->
+        <button type="button" id="leftArrow" class="btn btn-primary"><</button>
+        <p><span id="SubmissionNumber">1</span> of <span id="SubmissionCount">1</span></p>
+        <button type="button" id="rightArrow" class="btn btn-primary">></button>
+<!-- TODO END -->
         <button type="button" class="btn btn-primary" ng-click= "myCtrl.CreateAccount()">Create Account</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
       </div>

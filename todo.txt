@@ -1,11 +1,20 @@
 
 I added code so that the responses tab now has the same form elements as the edit tab.
-TODO I need to make the form elements read-only on the responses tab.
+// DONE // I need to make the form elements read-only on the responses tab.
 I added code to the retrieveformdata.php script that retrieves each submission id related to that form and then returns...
 ...the description from the set of rows from the first submission.
-TODO display the row data from the first submission id in the responses tab. to do this i have to parse the data in script.js and then insert it
+// DONE // display the row data from the first submission id in the responses tab. to do this i have to parse the data in script.js and then insert it
 After I get this far, I will need to add next and previous buttons and update the data based on the position of the...
 ...submissions array in the retrieveformdata.php script
 
+TODO I need to restrict people from submitting these characters (-,/,|) because i use them to separate data
 
 data for text and numbers are now showing in response tab
+data for checkbox are now showing as well (did not test extensively for possible bugs)
+
+// DONE // admin.php lines 177-180 are where the left and right buttons are. I need to make it so these buttons navigate through submissions
+
+// DONE //The cookie almost works perfectly. I just need to fix it so that when you change from one form to another it resets the cookie to 0
+// DONE //I also need to update the left and right buttons so that they run a php request similar to retrieveformdata.php
+
+TODO This has me stumped... I'll come back to it later - there is a bug where the checkboxes don't uncheck themselves based on the current submission being viewed.
