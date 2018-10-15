@@ -8,7 +8,7 @@ print "<h1>Unable to connect to MYSQL</h1>";
 
 $formId = ($_POST['formId']);
 
-$sqlStatement2 = "SELECT * FROM form_input2 WHERE form_id = $formId";
+$sqlStatement2 = "SELECT * FROM form_input WHERE form_id = $formId";
 $result2 = mysqli_query($db, $sqlStatement2);
 $numrows2 = mysqli_num_rows($result2);
 
@@ -23,7 +23,7 @@ for ($j = 0; $j < $numrows2; $j++)
 }
 
 //This query is used to grab the input_id and input_type to be used later
-$sqlStatement3 = "SELECT id, input_type FROM form_input2 WHERE form_id = $formId";
+$sqlStatement3 = "SELECT id, input_type FROM form_input WHERE form_id = $formId";
 $result3 = mysqli_query($db, $sqlStatement3);
 $numrows3 = mysqli_num_rows($result3);
 
@@ -107,7 +107,7 @@ for ( $i=0 ; $i < $total ; $i++)
 //testing area
 if(isset($_FILES['image']))
 {
-$sqlStatement4 = "SELECT id, input_type FROM form_input2 WHERE input_type = 'file'";
+$sqlStatement4 = "SELECT id, input_type FROM form_input WHERE input_type = 'file'";
 $result4 = mysqli_query($db, $sqlStatement4);
 $numrows4 = mysqli_num_rows($result4);
 $row4 = mysqli_fetch_array($result4);

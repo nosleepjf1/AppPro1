@@ -56,8 +56,8 @@ if($getNewId){
 
 
 
-//adding the form data into the form_input2
-$addRow = "INSERT INTO form_input2 (form_id, title, description, input_type, options) VALUES ($getNewId, '{$title}', '{$description}', '{$input_type}', '{$options}')";
+//adding the form data into the form_input
+$addRow = "INSERT INTO form_input (form_id, title, description, input_type, options) VALUES ($getNewId, '{$title}', '{$description}', '{$input_type}', '{$options}')";
 
 //run a query with mysqli_query(variable storing the database you connected to, sql statement)
 $result = mysqli_query($db, $addRow);

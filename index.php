@@ -18,6 +18,37 @@
 
 <!-- testing area -->
 
+<div>
+<button type="button" style="margin: 10px 0px" class="btn btn-info" data-toggle="modal" data-target="#howToUse">Instructions for using this app</button>
+</div>
+
+
+<div class="modal" id="howToUse" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">How to use this app</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+    <p id="exampleInputEmail2" aria-describedby="emailHelp" placeholder="Enter email"> 1- Watch the tutorial video: </p>
+    <p id="exampleInputEmail2" aria-describedby="emailHelp" placeholder="Enter email"> 2- Log in as the default administrator- <br> email: testadmin@gmail.com <br> password: testadmin </p>
+    <p id="exampleInputEmail2" aria-describedby="emailHelp" placeholder="Enter email"> 3- Once you are logged in as an admin you can create your own administrators and users </p>
+  </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
 <!-- end testing area -->
 
 

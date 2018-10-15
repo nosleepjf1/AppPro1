@@ -22,9 +22,9 @@
     &#9881;
   </button>
   <div class="dropdown-menu" aria-labelledby="settingsMenuButton">
-    <a class="dropdown-item" href="#">Action</a>
-    <a class="dropdown-item" href="#">Another action</a>
-    <a class="dropdown-item" href="#">Something else here</a>
+    <a class="dropdown-item" href="#">still under development</a>
+    <a class="dropdown-item" href="#">still under development</a>
+    <a class="dropdown-item" href="#">still under development</a>
   </div>
 </div>
 <!-- testing area -->
@@ -61,10 +61,12 @@
 </div>
 
 
-<!-- Button trigger modal -->
+<!-- testing area commented out just the button temporarily
+
 <button type="button" class="btn btn-primary" ng-click = "myCtrl.FormName()" data-toggle="modal" data-target="#exampleModal">
   Create New Form
 </button>
+End testing area -->
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -141,7 +143,7 @@ FormTitle($title, $i);
 
 //print "$title - $formId";
   
-$sqlStatement2 = "SELECT * FROM form_input2 WHERE form_id = $formId";
+$sqlStatement2 = "SELECT * FROM form_input WHERE form_id = $formId";
 $result2 = mysqli_query($db, $sqlStatement2);
 $numrows2 = mysqli_num_rows($result2);
 //print " $title has $numrows2 rows ";

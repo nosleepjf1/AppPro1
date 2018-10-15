@@ -39,6 +39,7 @@ else
 }
 print($submissionsArrayToString);
 
+
 if($_COOKIE["arrayPosition"])
 {
   $arrayPosition = $_COOKIE["arrayPosition"];
@@ -89,7 +90,7 @@ for ($j = 0; $j < $numrows3; $j++)
 }
 
 
-print $_COOKIE["arrayPosition"];
+//print $_COOKIE["arrayPosition"];
 
 //end testing area
 print $returnData;

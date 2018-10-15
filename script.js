@@ -81,7 +81,8 @@ $(function(){
         $("#dropdownMenuButton15:first-child").text($(this).text());
     });
 
-    var saveFormId = 0;
+    var saveFormId;
+
     //This list of functions is a workaround that allows me to switch modal tabs and get back to the original tab
     $("#Modal0").click(function() {
         positionOfArrayForSubmissionIds = 0;
@@ -89,6 +90,7 @@ $(function(){
         $("#editTab").attr('data-target', '#exampleModal0');
        var formId = $("#getFormId0").val();
        GetFormData(formId);
+       GetCsvData(formId);
        saveFormId = formId;
     });
     $("#Modal1").click(function() {
@@ -97,6 +99,7 @@ $(function(){
         $("#editTab").attr('data-target', '#exampleModal1');
         var formId = $("#getFormId1").val();
         GetFormData(formId);
+        GetCsvData(formId);
         saveFormId = formId;
     });
     $("#Modal2").click(function() {
@@ -105,6 +108,7 @@ $(function(){
         $("#editTab").attr('data-target', '#exampleModal2');
         var formId = $("#getFormId2").val();
         GetFormData(formId);
+        GetCsvData(formId);
         saveFormId = formId;
     });
     $("#Modal3").click(function() {
@@ -113,6 +117,7 @@ $(function(){
         $("#editTab").attr('data-target', '#exampleModal3');
         var formId = $("#getFormId3").val();
         GetFormData(formId);
+        GetCsvData(formId);
         saveFormId = formId;
     });
     $("#Modal4").click(function() {
@@ -121,6 +126,7 @@ $(function(){
         $("#editTab").attr('data-target', '#exampleModal4');
         var formId = $("#getFormId4").val();
         GetFormData(formId);
+        GetCsvData(formId);
         saveFormId = formId;
     });
     $("#Modal5").click(function() {
@@ -128,6 +134,7 @@ $(function(){
         $("#editTab").attr('data-target', '#exampleModal5');
         var formId = $("#getFormId5").val();
         GetFormData(formId);
+        GetCsvData(formId);
         saveFormId = formId;
     });
     $("#Modal6").click(function() {
@@ -135,6 +142,7 @@ $(function(){
         $("#editTab").attr('data-target', '#exampleModal6');
         var formId = $("#getFormId6").val();
         GetFormData(formId);
+        GetCsvData(formId);
         saveFormId = formId;
     });
     $("#Modal7").click(function() {
@@ -142,6 +150,7 @@ $(function(){
         $("#editTab").attr('data-target', '#exampleModal7');
         var formId = $("#getFormId7").val();
         GetFormData(formId);
+        GetCsvData(formId);
         saveFormId = formId;
     });
     $("#Modal8").click(function() {
@@ -149,6 +158,7 @@ $(function(){
         $("#editTab").attr('data-target', '#exampleModal8');
         var formId = $("#getFormId8").val();
         GetFormData(formId);
+        GetCsvData(formId);
         saveFormId = formId;
     });
     $("#Modal9").click(function() {
@@ -156,6 +166,7 @@ $(function(){
         $("#editTab").attr('data-target', '#exampleModal9');
         var formId = $("#getFormId9").val();
         GetFormData(formId);
+        GetCsvData(formId);
         saveFormId = formId;
     });
     $("#Modal10").click(function() {
@@ -163,6 +174,7 @@ $(function(){
         $("#editTab").attr('data-target', '#exampleModal10');
         var formId = $("#getFormId10").val();
         GetFormData(formId);
+        GetCsvData(formId);
         saveFormId = formId;
     });
     $("#Modal11").click(function() {
@@ -170,6 +182,7 @@ $(function(){
         $("#editTab").attr('data-target', '#exampleModal11');
         var formId = $("#getFormId11").val();
         GetFormData(formId);
+        GetCsvData(formId);
         saveFormId = formId;
     });
     $("#Modal12").click(function() {
@@ -177,6 +190,7 @@ $(function(){
         $("#editTab").attr('data-target', '#exampleModal12');
         var formId = $("#getFormId12").val();
         GetFormData(formId);
+        GetCsvData(formId);
         saveFormId = formId;
     });
     $("#Modal13").click(function() {
@@ -184,6 +198,7 @@ $(function(){
         $("#editTab").attr('data-target', '#exampleModal13');
         var formId = $("#getFormId13").val();
         GetFormData(formId);
+        GetCsvData(formId);
         saveFormId = formId;
     });
     $("#Modal14").click(function() {
@@ -191,6 +206,7 @@ $(function(){
         $("#editTab").attr('data-target', '#exampleModal14');
         var formId = $("#getFormId14").val();
         GetFormData(formId);
+        GetCsvData(formId);
         saveFormId = formId;
     });
     $("#Modal15").click(function() {
@@ -198,6 +214,7 @@ $(function(){
         $("#editTab").attr('data-target', '#exampleModal15');
         var formId = $("#getFormId15").val();
         GetFormData(formId);
+        GetCsvData(formId);
         saveFormId = formId;
     });
 
@@ -226,7 +243,7 @@ $(function(){
                 if(XMLHttpRequestObject.readyState == 4 && XMLHttpRequestObject.status == 200)
                 {
                     var returnedData = XMLHttpRequestObject.responseText;
-                    //console.log("returned data: " + returnedData);
+                    console.log("returned data: " + returnedData);
                     ViewFormData(returnedData);
                     if(returnedData == "success")
                     {
@@ -257,11 +274,6 @@ $(function(){
 
         }
     } //End GetFormData
-
-
-
-    //testing area __________________________
-
 
 
     function GetFormData2(formId)
@@ -303,9 +315,72 @@ $(function(){
             XMLHttpRequestObject.send("data=" + formId);
         }
     }
+    //testing area ______________________________
+
+    function GetCsvData(formId)
+    {
+        var XMLHttpRequestObject = false;
+        if (window.XMLHttpRequest)
+        {
+            XMLHttpRequestObject = new XMLHttpRequest();
+        } else if (window.ActiveXObject)
+        {
+            XMLHttpRequestObject = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+
+        if(XMLHttpRequestObject)
+        {
+            XMLHttpRequestObject.open("POST", "retrieveformdataforcsv.php");
+            XMLHttpRequestObject.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+            XMLHttpRequestObject.onreadystatechange = function()
+            {
+                if(XMLHttpRequestObject.readyState == 4 && XMLHttpRequestObject.status == 200)
+                {
+                    var returnedData = XMLHttpRequestObject.responseText;
+                    //console.log("returned data: " + returnedData);
+                    ViewCsvData(returnedData);
+                    if(returnedData == "success")
+                    {
+                        alert("Your account has been created");
+                    }
+                    else
+                    {
+                        //!!!!       alert("failed");
+                    }
+
+                }
+            }
 
 
+            XMLHttpRequestObject.send("data=" + formId);
+        }
+    }
 
+    function ViewCsvData(subArray)
+    {
+        var arr = subArray.split("-");
+        console.log("arr: " + arr[0]);
+       // console.log("right freaking here: " + subArray);
+        var splitSubmissions = arr[1].split("!");
+        for(var i = 0; i < splitSubmissions.length; i++)
+        {
+            var newArr = splitSubmissions[i];
+            console.log("newArr: " + newArr);
+        }
+
+        //var createSubArray = arr[0];
+        //var subIDArray = createSubArray.split("|");
+        //arrayOfSubmissionIds = subIDArray;
+
+        //var createDataArray = arr[1];
+        //var dataArray = createDataArray.split("|");
+
+        //console.log("dataArray: " + dataArray);
+        //console.log(dataArray.length);
+        //console.log(dataArray[0]);
+        //console.log(dataArray[1]);
+    }
 
     //end testing area __________________________
 

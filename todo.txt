@@ -7,7 +7,7 @@ I added code to the retrieveformdata.php script that retrieves each submission i
 After I get this far, I will need to add next and previous buttons and update the data based on the position of the...
 ...submissions array in the retrieveformdata.php script
 
-TODO I need to restrict people from submitting these characters (-,/,|) because i use them to separate data
+TODO I need to restrict people from submitting these characters (-,/,|,!) because i use them to separate data
 
 data for text and numbers are now showing in response tab
 data for checkbox are now showing as well (did not test extensively for possible bugs)
@@ -18,3 +18,10 @@ data for checkbox are now showing as well (did not test extensively for possible
 // DONE //I also need to update the left and right buttons so that they run a php request similar to retrieveformdata.php
 
 TODO This has me stumped... I'll come back to it later - there is a bug where the checkboxes don't uncheck themselves based on the current submission being viewed.
+
+TODO The forms are not editable yet. If I have time at the end I should add this functionality. This isn't required, consider it extra credit.
+
+TODO line 366 of script.js has a for loop which is separating each submission. I need to separate the pieces of data and store it in an object. Then the object can be...
+TODO ...used to export the data into a csv. Currently the data exported into a csv is just a fake object in csvexport.js
+
+TODO the form submissions show 1 of 1 even if there are 0 submissions. I should fix this.

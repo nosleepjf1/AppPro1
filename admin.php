@@ -10,6 +10,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.9/angular.js"></script>
 <script src="app.js"></script>
 <script src="script.js"></script>
+<script src="csvexport.js"></script>
 <script src="validate.js"></script>
 </head>
 
@@ -65,7 +66,7 @@
 
 
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" ng-click = "myCtrl.FormName()" data-toggle="modal" data-target="#exampleModal">
+<button type="button" class="btn btn-success" ng-click = "myCtrl.FormName()" data-toggle="modal" data-target="#exampleModal">
   Create New Form
 </button>
 
@@ -175,11 +176,12 @@
       </div>
       <div class="modal-footer">
 
-<!-- TODO   I need to make these buttons update navigate through the submissions left and right  -->
+
+        <button type="button" class="btn btn-success" style="float: left" onclick='downloadCSV({ filename: "stock-data.csv" });'>CSV</button>
         <button type="button" id="leftArrow" class="btn btn-primary"><</button>
         <p><span id="SubmissionNumber">1</span> of <span id="SubmissionCount">1</span></p>
         <button type="button" id="rightArrow" class="btn btn-primary">></button>
-<!-- TODO END -->
+
         <button type="button" class="btn btn-primary" ng-click= "myCtrl.CreateAccount()">Create Account</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
       </div>
@@ -226,7 +228,7 @@ FormTitle($title, $i);
 
 //print "$title - $formId";
   
-$sqlStatement2 = "SELECT * FROM form_input2 WHERE form_id = $formId";
+$sqlStatement2 = "SELECT * FROM form_input WHERE form_id = $formId";
 $result2 = mysqli_query($db, $sqlStatement2);
 $numrows2 = mysqli_num_rows($result2);
 //print " $title has $numrows2 rows ";
